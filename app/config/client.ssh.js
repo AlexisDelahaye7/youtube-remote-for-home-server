@@ -31,8 +31,9 @@ client
   .connect({
     host: '192.168.1.24',
     port: 22,
+    type: 'publickey',
     username: 'youtube_cli',
-    password: 'nag bloated bully snowbound',
+    // password: process.env.USER_PASSWORD,
     privateKey: readFileSync(path.resolve(dirname, '.private/id_ed25519'), 'utf-8'),
     passphrase: process.env.SSH_PASSPHRASE,
   });
