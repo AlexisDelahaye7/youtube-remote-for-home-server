@@ -4,7 +4,9 @@
 
 ## How it works ?
 
-This app sends SSH commands to your home server to control a youtube video playing on it. It can be used over the internet through a secure SSH connection.
+This app sends SSH commands to your media server to control a youtube video playing on it. It can be used over the internet through a secure SSH connection.
+
+The API's server and the media's server can be on the same machine or on different machines.
 
 The video is played in the CLI using [yewtube](https://github.com/mps-youtube/yewtube).
 Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
@@ -14,7 +16,7 @@ Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
 
 1. Install Docker on you **media server** follwing the instructions [here](https://docs.docker.com/engine/install/).
 
-2. Copy the content of the folder *app/config/docker/server* and the *SSH public key* to the desired directory from your local machine to the **media server**.
+2. Copy the content of the folder *app/config/docker/server* and the *app/config/.private/ssh_key.pub* to the desired directory from your local machine to the **media server**.
 
 ```bash
 scp app/config/docker/server/* user@server_ip:~/path/to/your/directory
