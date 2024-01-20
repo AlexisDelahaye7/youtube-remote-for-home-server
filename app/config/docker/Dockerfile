@@ -3,7 +3,7 @@ FROM debian:latest
 RUN apt update && apt install -y openssh-server && apt install -y supervisor
 RUN mkdir -p /var/run/sshd
 
-# Change the root password (update this line)
+# Change the root password (update this line : change password)
 RUN echo 'root:root_password' | chpasswd
 
 # Allow root login
@@ -13,12 +13,12 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/
 RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#AuthorizedKeysFile/AuthorizedKeysFile/' /etc/ssh/sshd_config
 
-# Create debian user "youtube_cli" (update this line)
+# Create debian user "youtube_cli" (update this line : change password)
 RUN useradd -ms /bin/bash youtube_cli
-RUN echo "youtube_cli:overhaul unshaved tables outcome" | chpasswd
+RUN echo "youtube_cli:youtube_cli_password" | chpasswd
 WORKDIR /home/youtube_cli
 
-# Add your API SSH public key to the media server authorized_keys file (update this line)
+# Add your API SSH public key to the media server authorized_keys file
 RUN mkdir -p /home/youtube_cli/.ssh
 RUN touch /home/youtube_cli/.ssh/authorized_keys
 RUN echo "#youtube_cli_API_SSH_pubkey" >> /home/youtube_cli/.ssh/authorized_keys
