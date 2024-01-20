@@ -12,7 +12,15 @@
     "ssh2",
     "nodejs",
     "homeserver",
-    "remote-ssh-control"
+    "remote-ssh-control",
+    "ssh",
+    "openssh-server",
+    "docker",
+    "supervisord",
+    "youtube",
+    "yewtube",
+    "vlc"
+
   ],
   "author": "AlexisDelahaye7",
   "license": "ISC",
