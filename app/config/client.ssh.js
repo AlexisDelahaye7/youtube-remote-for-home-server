@@ -4,9 +4,6 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// const privateKeyPath = path.resolve(__dirname, fs.readFileSync('.private/id_ed25519'));
-
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const client = new Client();
@@ -29,11 +26,10 @@ client
   })
 
   .connect({
-    host: '192.168.1.24',
-    port: 22,
+    host: process.env.SSH_IP || 'localhost',
+    port: process.env.SSH_PORT || 2200,
     type: 'publickey',
-    username: 'youtube_cli',
-    // password: process.env.USER_PASSWORD,
+    username: process.env.USER_NAME,
     privateKey: readFileSync(path.resolve(dirname, '.private/id_ed25519'), 'utf-8'),
     passphrase: process.env.SSH_PASSPHRASE,
   });
