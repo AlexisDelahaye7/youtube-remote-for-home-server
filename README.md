@@ -63,5 +63,9 @@ If you want to access your server from outside your local network, you need to o
 
 ## dev notes : **TODO**
 
+- Pulseaudio sound forwarding (for dev purposes)
+- Switch to pnpm
 - Install VLC [Doc](https://wiki.videolan.org/VLC_command-line_help/)
+
 - Install yewtube or use VLC CLI
+- Direct request to Youtube API ? [Doc](https://developers.google.com/youtube/v3/docs?hl=fr)
