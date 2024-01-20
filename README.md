@@ -16,7 +16,7 @@ Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
 
 2. Generate a pair of SSH keys, following the instructions [from the .private/README.md](app/config/.private/README.md).
 
-3. Copy the content of the folder *app/config/docker/** and the *app/config/.private/ssh_key.pub* to the desired directory from your local machine to the **media server**.
+3. Update the content of the Dockerfile and copy the folder *app/config/docker/** and the *app/config/.private/ssh_key.pub* file to the desired directory from your local machine to the **media server**.
 
 ```bash
 scp app/config/docker/* user@server_ip:~/path/to/your/directory
