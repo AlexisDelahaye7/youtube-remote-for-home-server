@@ -29,5 +29,5 @@ sqitch.conf
 
 
 #ssh keys
-.private/*
+.private/
 !.private/README.md
