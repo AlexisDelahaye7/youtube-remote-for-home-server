@@ -69,3 +69,5 @@ If you want to access your server from outside your local network, you need to o
 
 - Install yewtube or use VLC CLI
 - Direct request to Youtube API ? [Doc](https://developers.google.com/youtube/v3/docs?hl=fr)
+
+[Container sound : Alsa or Pulseaudio ?](https://github.com/mviereck/x11docker/wiki/Container-sound:-ALSA-or-Pulseaudio)
