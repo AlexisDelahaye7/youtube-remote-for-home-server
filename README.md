@@ -13,7 +13,9 @@
 
 ## How it works ?
 
-This app's REST API sends SSH commands to a container (so called *youtube_cli container*) to control a youtube video playing on it. It can be used over the internet through a secure SSH connection. Therefore, the API and the youtube_cli container can be on the same host machine or on different machines.
+![youtube-remote-for-home-server](docs/assets/project-architecture.svg)
+
+This app's REST API sends SSH commands to a container (so called *youtube_cli container*) to control a youtube audio playing on it. It can be used over the internet through a secure SSH connection. Therefore, the API and the youtube_cli container can be on the same host machine or on different machines.
 
 The video is played in the CLI using [yewtube](https://github.com/mps-youtube/yewtube).
 Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
