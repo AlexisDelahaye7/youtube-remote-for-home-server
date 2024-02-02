@@ -63,7 +63,7 @@ docker run \
 7. Grab the container's IP address and save it somewhere.
 
 ```bash
-docker inspect --format '{{ .NetworkSettings.IPAddress }}' pulsecontainer)
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' youtube_cli-container
 ```
 
 8. Install Pulseaudio as a daemon where you want to play the sound. For example, on your host server. You can find the instructions [here](https://wiki.archlinux.org/title/PulseAudio/Examples#PulseAudio_as_a_system-wide_daemon) for Debian based OS.
