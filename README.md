@@ -15,7 +15,7 @@
 
 ![youtube-remote-for-home-server](docs/assets/project-architecture.svg)
 
-This app's REST API sends SSH commands to a container (so called *youtube_cli container*) to control a youtube audio playing on it. It can be used over the internet through a secure SSH connection. Therefore, the API and the youtube_cli container can be on the same host machine or on different machines.
+This app's REST API sends SSH commands to a container (so called _youtube_cli container_) to control a youtube audio playing on it. It can be used over the internet through a secure SSH connection. Therefore, the API and the youtube_cli container can be on the same host machine or on different machines.
 
 The video is played in the CLI using [yewtube](https://github.com/mps-youtube/yewtube).
 Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
@@ -28,13 +28,13 @@ Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
 
 3. In the Dockerfile, you will have to modify a few things accordigly to your setup.
 
-    1. Change the passwords for root and youtube_cli user.
+   1. Change the passwords for root and youtube_cli user.
 
-    2. Update the value for the `PULSE_SERVER` environment variable with the IP of the machine desired to play the sound. You can find the IP by running the following command on output machine.
+   2. Update the value for the `PULSE_SERVER` environment variable with the IP of the machine desired to play the sound. You can find the IP by running the following command on output machine.
 
-    ```bash
-    ip -4 -o a| grep docker0 | awk '{print $4}' | cut -d/ -f1
-    ```
+   ```bash
+   ip -4 -o a| grep docker0 | awk '{print $4}' | cut -d/ -f1
+   ```
 
 4. Copy the folder `app/config/docker/*` and the `app/config/.private/ssh_key.pub` file to the desired directory from this repository (probably your local machine) to the host server.
 
@@ -60,7 +60,7 @@ docker run \
   youtube_cli-image
 ```
 
-  We might not need the cookie, but I'm not sure yet. I'll update this section when I'll know more.
+We might not need the cookie, but I'm not sure yet. I'll update this section when I'll know more.
 
 7. Grab the container's IP address and save it somewhere.
 
@@ -84,8 +84,8 @@ pactl load-module module-native-protocol-tcp port=4713 auth-ip-acl=container_ip_
 
 For some reason, you might want to tunnel the API/container or the container/media-server connection over the internet. In this case, you will have to open and forward the according ports to your server, in each your router admin pannel and your firewall.
 
-  SSH port : 2200\
-  Pulseaudio port : 4713
+SSH port : 2200\
+ Pulseaudio port : 4713
 
 ### SSH into the container
 
@@ -95,8 +95,7 @@ If you want to access the container shell from your local machine, you can run t
 ssh -i /path/to/private-ssh-key youtube_cli@host-server-hostname -p 2200
 ```
 
-
-## Resources 
+## Resources
 
 [Pulseaudio doc](https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Network)
 
@@ -110,6 +109,7 @@ Special thanks to the authors of those resources that helped me **a lot** for th
 
 [audio inside container (socket vs network using LXD)](https://discuss.linuxcontainers.org/t/audio-via-pulseaudio-inside-container/8768)
 
+[Uderstand Docker subnets (French)](https://blog.alphorm.com/comprendre-le-reseau-sous-docker/)
 
 ## dev notes : **TODO**
 
