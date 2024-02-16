@@ -30,10 +30,14 @@ Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
 
    1. Change the passwords for root and youtube_cli user.
 
-   2. Update the value for the `PULSE_SERVER` environment variable with the IP of the machine desired to play the sound. You can find the IP by running the following command on output machine.
+   2. Update the value for the `PULSE_SERVER` environment variable with the IP of the media server. You can find the IP by running the correct command among the following on the media server.
 
    ```bash
+   # Media server is the host machine
    ip -4 -o a| grep docker0 | awk '{print $4}' | cut -d/ -f1
+
+   # Media server is a different machine
+   ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'
    ```
 
 4. Copy the folder `app/config/docker/*` and the `app/config/.private/ssh_key.pub` file to the desired directory from this repository (probably your local machine) to the host server.

@@ -29,10 +29,26 @@ Here, I'll be facing a few challenges :
 
 ## Let's start !
 
-### to add later
+### Docker setup
 
-List Docker containers IP address
+#### Docker Networking
+
+sources : [Official doc: Docker Networking](https://docs.docker.com/network/), [Medium article: How containers communicate with host and each other ?](https://towardsdatascience.com/docker-networking-919461b7f498), [NetworkChuck video](https://www.youtube.com/watch?v=bKFMS5C4CG0)
+
+In order to redirect audio from the container to the host over TCP, we'll have to know the IP addresses of each element within the bidge network.
+
+We can get the host ip address using the following command :
+
+```bash
+ip -4 -o a| grep docker0 | awk '{print $4}' | cut -d/ -f1
+```
+
+On my machine, the output is `172.17.0.1`
+
+We can get the container's ip address using the following command :
 
 ```bash
 docker ps -q | xargs -n 1 docker inspect --format '{{ .Name }} {{range .NetworkSettings.Networks}} {{.IPAddress}}{{end}}' | sed 's#^/##';
 ```
+
+On my machine, the output is `172.17.0.2` for the container `youtube_cli-container`
