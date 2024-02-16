@@ -48,7 +48,6 @@ RUN chown -R youtube_cli:youtube_cli /home/youtube_cli/.config/pulse
 #==================#
 
 RUN echo 'export PULSE_SERVER=tcp:172.17.0.1:4713' >> /home/youtube_cli/.bashrc
-RUN echo 'export PULSE_COOKIE=/home/youtube_cli/.config/pulse/cookie' >> /home/youtube_cli/.bashrc
 RUN echo 'source ~/.bashrc' >> /home/youtube_cli/.bash_profile
 # Fix pulse daemon quitting
 RUN echo "exit-idle-time=-1" >> /etc/pulse/daemon.conf

@@ -54,7 +54,6 @@ docker build -t youtube_cli-image .
 ```bash
 docker run \
   -dit \
-  -v ~/.config/pulse/cookie:/home/youtube_cli/.config/pulse/cookie \
   --name youtube_cli-container \
   -p 2200:22 \
   youtube_cli-image
@@ -113,8 +112,5 @@ Special thanks to the authors of those resources that helped me **a lot** for th
 
 ## dev notes : **TODO**
 
-- Switch to pnpm
-
 - Install yewtube or use VLC CLI
 - Direct request to Youtube API ? [Doc](https://developers.google.com/youtube/v3/docs?hl=fr)
-- Need cookie for Pulseaudio TCP connection using auth-ip-acl ? If not, remove the volume mount for the cookie and the env var PULSE_COOKIE.
