@@ -47,6 +47,7 @@ RUN chown -R youtube_cli:youtube_cli /home/youtube_cli/.config/pulse
 #=== PULSEAUDIO ===#
 #==================#
 
+# either 172.17.0.1 for docker0 or local_ip:port for machine on local network
 RUN echo 'export PULSE_SERVER=tcp:172.17.0.1:4713' >> /home/youtube_cli/.bashrc
 RUN echo 'source ~/.bashrc' >> /home/youtube_cli/.bash_profile
 # Fix pulse daemon quitting
