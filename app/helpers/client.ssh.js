@@ -8,6 +8,7 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const client = new Client();
 
+/*
 client
   .on('ready', () => {
     console.log('Client :: ready');
@@ -24,14 +25,16 @@ client
       stream.end('ls -l\nexit\n');
     });
   })
-
-  .connect({
-    host: process.env.SSH_IP || 'localhost',
-    port: process.env.SSH_PORT || 2200,
-    type: 'publickey',
-    username: process.env.USER_NAME,
-    privateKey: readFileSync(path.resolve(dirname, '.private/id_ed25519'), 'utf-8'),
-    passphrase: process.env.SSH_PASSPHRASE,
-  });
+*/
+client.connect({
+  host: process.env.SSH_IP || 'localhost',
+  port: process.env.SSH_PORT || 2200,
+  type: 'publickey',
+  username: process.env.USER_NAME,
+  privateKey: readFileSync(path.resolve(dirname, '../config/.private/id_ed25519'), 'utf-8'),
+  passphrase: process.env.SSH_PASSPHRASE,
+}).on('ready', () => {
+  console.log('SSH connection ready');
+});
 
 export default client;

@@ -110,7 +110,10 @@ Special thanks to the authors of those resources that helped me **a lot** for th
 
 [Uderstand Docker subnets (French)](https://blog.alphorm.com/comprendre-le-reseau-sous-docker/)
 
+[Expose container IP to LAN](https://www.quora.com/Can-a-docker-bridge-network-allocate-LAN-IP-addresses-for-each-container#:~:text=Yes%2C%20Docker's%20bridge%20network%20mode,the%20host%20and%20other%20containers.)
+
 ## dev notes : **TODO**
 
 - Install yewtube or use VLC CLI
 - Direct request to Youtube API ? [Doc](https://developers.google.com/youtube/v3/docs?hl=fr)
+- Setup Git Flow

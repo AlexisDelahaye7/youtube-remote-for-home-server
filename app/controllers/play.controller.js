@@ -1,7 +1,7 @@
 import ApiError from '../errors/api.error.js';
 import logger from '../helpers/logger.js';
 import checkPayload from '../helpers/payload.check.js';
-import client from '../config/client.ssh.js';
+import client from '../helpers/client.ssh.js';
 
 export default {
 
@@ -12,9 +12,21 @@ export default {
       throw new ApiError('Payload is not valid', { statusCode: 400 });
     }
 
-    // client.
-    // TODO : ssh to server and play the video
+    const command = 'yt';
 
+    client.exec(command, (err, stream) => {
+      if (err) throw new ApiError('SSH command failed', { statusCode: 500 });
+
+      stream
+        .on('close', () => {
+          console.log('Stream :: close');
+          client.end();
+        })
+        .on('data', (data) => {
+          console.log(`OUTPUT: ${data}`);
+        });
+      // stream.end('ls -l\nexit\n');
+    });
     res.json(payload);
   },
 
