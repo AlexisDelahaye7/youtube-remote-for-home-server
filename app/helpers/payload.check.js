@@ -7,16 +7,16 @@ const regExp = {
 
 export default (request, payload) => {
   switch (request.type) {
-    case 'playURL':
+    case "playURL":
       if (!payload.url) return false;
       if (!regExp.url.youtube.test(payload.url)) return false;
       return true;
 
-    case 'pauseAudio':
-      if (audioStatus === 'pause') return false;
+    case "pauseAudio":
+      if (audioStatus === "pause") return false;
       return true;
 
-    case 'resumeAudio':
+    case "resumeAudio":
       return checkResumePayload(payload);
     default:
       return false;

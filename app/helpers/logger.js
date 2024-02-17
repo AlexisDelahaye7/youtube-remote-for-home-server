@@ -1,6 +1,6 @@
-import { createLogger, format, transports } from 'winston';
+import { createLogger, format, transports } from "winston";
 
-import 'winston-daily-rotate-file';
+import "winston-daily-rotate-file";
 
 const {
   combine, timestamp, colorize, errors, align, printf,
@@ -9,10 +9,10 @@ const {
 const logger = createLogger({
   transports: [
     new transports.DailyRotateFile({
-      filename: 'logs/combined-%DATE%.log',
-      datePattern: 'YYYY-MM-DD',
+      filename: "logs/combined-%DATE%.log",
+      datePattern: "YYYY-MM-DD",
       zippedArchive: true,
-      frequency: '24h',
+      frequency: "24h",
       maxFiles: 5,
       format: combine(
         timestamp(),
@@ -20,12 +20,12 @@ const logger = createLogger({
       ),
     }),
     new transports.DailyRotateFile({
-      filename: 'logs/error-%DATE%.log',
-      datePattern: 'YYYY-MM-DD',
+      filename: "logs/error-%DATE%.log",
+      datePattern: "YYYY-MM-DD",
       zippedArchive: true,
-      frequency: '24h',
+      frequency: "24h",
       maxFiles: 5,
-      level: 'error',
+      level: "error",
       format: combine(
         errors({ stack: true }),
         timestamp(),
@@ -33,12 +33,12 @@ const logger = createLogger({
       ),
     }),
     new transports.DailyRotateFile({
-      filename: 'logs/access-%DATE%.log',
-      datePattern: 'YYYY-MM-DD',
+      filename: "logs/access-%DATE%.log",
+      datePattern: "YYYY-MM-DD",
       zippedArchive: true,
-      frequency: '24h',
+      frequency: "24h",
       maxFiles: 5,
-      level: 'http',
+      level: "http",
       format: combine(
         timestamp(),
         format.json(),
@@ -47,14 +47,14 @@ const logger = createLogger({
   ],
 });
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   logger.add(new transports.Console({
-    level: 'debug',
+    level: "debug",
     format: combine(
       colorize(),
       timestamp(),
       align(),
-      printf((info) => `[${info.timestamp}] ${info.level}: ${info.message} ${info.stack ? `\n${info.stack}` : ''}`),
+      printf((info) => `[${info.timestamp}] ${info.level}: ${info.message} ${info.stack ? `\n${info.stack}` : ""}`),
     ),
   }));
 }

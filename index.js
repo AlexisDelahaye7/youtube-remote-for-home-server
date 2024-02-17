@@ -1,7 +1,7 @@
-import { createServer } from 'http';
-import './app/helpers/env.load.js';
-import logger from './app/helpers/logger.js';
-import app from './app/app.js';
+import { createServer } from "http";
+import "./app/helpers/env.load.js";
+import logger from "./app/helpers/logger.js";
+import app from "./app/app.js";
 
 const PORT = process.env.PORT ?? 3000;
 

@@ -2,7 +2,7 @@
 
 **TLDR** : This is a web app that let you play music from a youtube video on your home server. Everything is controlled from a web app GUI.
 
-**WORK IN PROGRESS** : not ready for production
+**WORK IN PROGRESS** : not ready for production. route `/play` works with the correct payload but there is still a lot of work to do.
 
 ## Caption
 
@@ -39,6 +39,18 @@ Yewtube requires [VLC](https://github.com/videolan/vlc) to play videos.
    # Media server is a different machine
    ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'
    ```
+
+On the media server, with Pulseaudio installed, update the config file /etc/pulse/default.pa to load the module `module-native-protocol-tcp` with the `auth-ip-acl` option set to the container's IP address.
+
+```config
+# Media server is the host machine
+load-module module-native-protocol-tcp port=4713 auth-ip-acl=container_ip_address
+
+# Media server is a different machine
+load-module module-native-protocol-tcp port=4713 auth-ip-acl=host_machine_ip_address
+
+
+```
 
 4. Copy the folder `app/config/docker/*` and the `app/config/.private/ssh_key.pub` file to the desired directory from this repository (probably your local machine) to the host server.
 
@@ -118,6 +130,7 @@ Special thanks to the authors of those resources that helped me **a lot** for th
 
 ## dev notes : **TODO**
 
-- Install yewtube or use VLC CLI
+- Find a work around yewtube instance mode.
+- SSH2 package reopen another terminal instance on each call.
 - Direct request to Youtube API ? [Doc](https://developers.google.com/youtube/v3/docs?hl=fr)
 - Setup Git Flow
